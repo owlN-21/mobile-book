@@ -21,11 +21,17 @@ public class FileUtil {
         try {
             Path path = getDataFilePath();
             Files.createDirectories(path.getParent());
-            Files.writeString(path, gson.toJson(contacts));
+
+            // Создаем обычный список
+            List<Contact> contactList = new ArrayList<>(contacts);
+
+            Files.writeString(path, gson.toJson(contactList));
         } catch (IOException e) {
             System.err.println("Ошибка сохранения: " + e.getMessage());
         }
     }
+
+
 
     public static List<Contact> loadContacts() {
         try {

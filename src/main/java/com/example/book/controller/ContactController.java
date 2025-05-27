@@ -24,9 +24,14 @@ public class ContactController {
     public void initialize() {
         List<Contact> loaded = FileUtil.loadContacts();
         if (loaded != null) {
+            for (Contact c : loaded) {
+                c.nameProperty();  // вызовет initProperties()
+            }
             contacts.addAll(loaded);
+            contactsTable.setItems(filteredContacts);
         }
     }
+
 
     @FXML
     private void handleAddContact() {
