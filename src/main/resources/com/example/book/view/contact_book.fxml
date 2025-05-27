@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.book.controller.ContactController" spacing="10"
+      style="-fx-padding: 20;" prefWidth="500">
+
+    <Label text="Книга контактов" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="searchField" promptText="Поиск по имени..."/>
+        <Button text="Найти" onAction="#handleSearch"/>
+    </HBox>
+
+    <TableView fx:id="contactsTable">
+        <columns>
+            <TableColumn text="Имя" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="name"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Телефон" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="phone"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email" prefWidth="200">
+                <cellValueFactory><PropertyValueFactory property="email"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <TextField fx:id="nameField" promptText="Имя"/>
+        <TextField fx:id="phoneField" promptText="Телефон"/>
+        <TextField fx:id="emailField" promptText="Email"/>
+        <Button text="Добавить" onAction="#handleAddContact"/>
+        <Button text="Удалить" onAction="#handleDeleteContact"/>
+    </HBox>
+</VBox>
